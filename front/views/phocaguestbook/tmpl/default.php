@@ -285,6 +285,7 @@ if ($show_form == 1) {
                                 {
 					echo "<tr><td></td><td>";
 					require_once( JPATH_COMPONENT.DS.'assets'.DS.'library'.DS.'recaptchalib.php');
+					echo "<script>var RecaptchaOptions = {lang:'de'};</script>";
 					echo recaptcha_get_html($this->recaptchakey);
 					echo "</td></tr>";
                                 }
