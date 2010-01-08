@@ -344,6 +344,16 @@ class PhocaGuestbookViewPhocaGuestbook extends JView
 			$enablecaptcha = 1;
 		}
 
+		// reCaptcha public key ------------------------------------------------
+		if ($params->get('enable_captcha') == 20)
+		{
+		 	$recaptchakey = $params->get('recaptcha_publickey');
+		}
+		else
+		{
+		 	$recaptchakey = ''; // Disables recaptcha
+		}
+
 		
 		//----------------------------------------------------------------------------------------------------
 		//Variables	
@@ -368,6 +378,7 @@ class PhocaGuestbookViewPhocaGuestbook extends JView
 		$this->assignRef( 'ipa' ,			$ipa);
 		$this->assignRef( 'reguser' ,		$reguser);
 		$this->assignRef( 'enablecaptcha' ,	$enablecaptcha);
+		$this->assignRef( 'recaptchakey' ,	$recaptchakey);
 		$this->assign('action',	$uri->toString());
 		parent::display($tpl);
 		

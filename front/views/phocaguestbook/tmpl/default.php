@@ -27,9 +27,9 @@ require_once( JPATH_COMPONENT.DS.'helpers'.DS.'phocaguestbook.php' );
 		--></script><?php
 		
 if ( $this->params->get( 'show_page_title' ) ) : 
-	?><div class="componentheading<?php echo $this->params->get( 'pageclass_sfx' ); ?>">
+	?><h1 class="componentheading<?php echo $this->params->get( 'pageclass_sfx' ); ?>">
 		<?php echo $this->params->get( 'page_title' );?>
-	</div><?php
+	</h1><?php
 endif;
 
 ?><div class="contentpane<?php echo $this->params->get( 'pageclass_sfx' ); ?>"><?php
@@ -250,18 +250,17 @@ if ($show_form == 1) {
 			<td colspan="3"><?php echo $this->editor; ?></td>
 		</tr>
 		
-		<?php if ($this->enablecaptcha > 0) {
-		
-		
+		<?php   if ($this->enablecaptcha > 0) {
+                        
 			// Server side checking CAPTCHA 
 			echo $this->error_msg_captcha;
 			//-- Server side checking CAPTCHA
 			
 			// Set fix height because of pane slider
 			$imageHeight = 'style="height:105px"';
-		
+                        if ($this->recaptchakey == '') {
 			?><tr>
-				<td width="5"><b><?php echo JText::_('Image Verification'); ?>: </b></td>		
+                                <td width="5"><b><?php echo JText::_('Image Verification'); ?>: </b></td>		
 				<td width="5" align="left" valign="middle" <?php echo $imageHeight ?>><?php
 				
 
@@ -281,9 +280,15 @@ if ($show_form == 1) {
 
 			</tr>
 		
-		<?php
-		}
-		
+		      <?php
+                        } else
+                                {
+					echo "<tr><td></td><td>";
+					require_once( JPATH_COMPONENT.DS.'assets'.DS.'library'.DS.'recaptchalib.php');
+					echo recaptcha_get_html($this->recaptchakey);
+					echo "</td></tr>";
+                                }
+                      } 		
 		?><tr>
 			<td>&nbsp;</td>
 			<td colspan="3"><input type="submit" name="save" value="<?php echo JText::_('Submit'); ?>" /> &nbsp;<input type="reset" name="reset" value="<?php echo JText::_('Reset'); ?>" /></td>
@@ -319,4 +324,7 @@ if ($this->config['position'] == 0) {
 //--Form 1
 // Form2
 echo $form2;
+if (1) // TODO: put in the right place, only if selected in admin panel
+{
+}
 ?></div>

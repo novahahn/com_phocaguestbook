@@ -357,12 +357,33 @@ class PhocaGuestbookControllerPhocaGuestbook extends PhocaGuestbookController
 		{
 			$reguser = 1;
 		}
-		
+
+
+
 		//ENABLE OR DISABLE CAPTCHA ----------------------------------------------------------------
 		if ($require['captcha'] < 1)// if captcha is disabled
 		{
 			$phoca_guestbook_session = 1;
 			$post['captcha'] = 1;
+		}
+		//VALIDATE RECAPTCHA
+		elseif ($params->get( 'enable_captcha' ) == 20)
+		{
+			require_once( JPATH_COMPONENT.DS.'assets'.DS.'library'.DS.'recaptchalib.php');
+			$resp = recaptcha_check_answer ($params->get( 'recaptcha_privatekey' ),
+				$_SERVER["REMOTE_ADDR"],
+				$_POST["recaptcha_challenge_field"],
+				$_POST["recaptcha_response_field"]);
+			if (!$resp->is_valid) {
+				$phoca_guestbook_session = 0;
+                                $post['captcha'] = 1;
+				die($post['recaptcha_challenge_field']);
+                        }
+                        else
+                        {
+                            $phoca_guestbook_session = 1;
+                            $post['captcha'] = 1;
+                        }
 		}
 		
 		/*
