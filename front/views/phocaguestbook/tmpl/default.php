@@ -224,11 +224,6 @@ if ($show_form == 1) {
 		</tr><?php
 		}
 		
-		?><tr>
-			<td width="5"><b><?php echo JText::_('Title'); ?>: </b></td>
-			<td colspan="3"><input type="text" name="title" id="pgbtitle" value="<?php echo $this->formdata->title ?>" size="32" maxlength="200" style="border:1px solid #cccccc" /></td>
-		</tr><?php 
-		
 		if ($this->display['formusername']){
 			?><tr>
 				<td><b><?php echo JText::_('Name'); ?>: </b></td>
