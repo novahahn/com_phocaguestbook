@@ -209,43 +209,31 @@ if ($show_form == 1) {
 		echo $pane->startPanel( JText::_('Post message'), 'phocaguestbook jpane-toggler-down' );
 	}
 
-	?><div><form action="<?php echo $this->action; ?>" method="post" name="saveForm" id="pgbSaveForm" onsubmit="return submitbutton();">
+	?><form action="<?php echo $this->action; ?>" method="post" name="saveForm" id="pgbSaveForm" onsubmit="return submitbutton();">
 
-	<table width="<?php echo $this->tmpl['tablewidth']; ?>"><?php
+	<?php
 		if ($this->error_msg_top !='') {
-			?><tr>
-				<td>&nbsp;</td>
-				<td colspan="3">
-					<?php
-					//-- Server side checking 
-					echo $this->error_msg_top;
-					//-- Server side checking
-					?>&nbsp;</td>
-		</tr><?php
+			//-- Server side checking 
+			echo $this->error_msg_top;
+			//-- Server side checking
 		}
 		
 		if ($this->display['formusername']){
-			?><tr>
-				<td><b><?php echo JText::_('Name'); ?>: </b></td>
-				<td colspan="3"><input type="text" name="pgusername" id="pgbusername" value="<?php echo $this->formdata->username ?>" size="32" maxlength="100" style="border:1px solid #cccccc" /></td>
-			</tr>
+		        ?><div><label>
+				<input type="text" name="pgusername" id="pgbusername" value="<?php echo $this->formdata->username ?>" size="32" maxlength="100" style="border:1px solid #cccccc" />
+	  		</label><b><?php echo JText::_('Name'); ?></b></div>
 			<?php
 		}
 		
 		if ($this->display['formemail']) {
-			?><tr>
-				<td><b><?php echo JText::_('Email'); ?>: </b></td>
-				<td colspan="3"><input type="text" name="email" id="pgbemail" value="<?php echo $this->formdata->email ?>" size="32" maxlength="100" style="border:1px solid #cccccc" /></td>
-			</tr>
+			?><div><label>
+				<input type="text" name="email" id="pgbemail" value="<?php echo $this->formdata->email ?>" size="32" maxlength="100" style="border:1px solid #cccccc" />
+			</label><b><?php echo JText::_('Email'); ?></b></div>
 			<?php
 		}
+  		echo $this->editor;
 		
-		?><tr>
-			<td><b><?php echo JText::_('Content'); ?>: </b></td>
-			<td colspan="3"><?php echo $this->editor; ?></td>
-		</tr>
-		
-		<?php   if ($this->enablecaptcha > 0) {
+		if ($this->enablecaptcha > 0) {
                         
 			// Server side checking CAPTCHA 
 			echo $this->error_msg_captcha;
@@ -253,7 +241,7 @@ if ($show_form == 1) {
 			
 			// Set fix height because of pane slider
 			$imageHeight = 'style="height:105px"';
-                        if ($this->recaptchakey == '') {
+                        if ($this->recaptchakey == '') { //TODO
 			?><tr>
                                 <td width="5"><b><?php echo JText::_('Image Verification'); ?>: </b></td>		
 				<td width="5" align="left" valign="middle" <?php echo $imageHeight ?>><?php
@@ -278,18 +266,12 @@ if ($show_form == 1) {
 		      <?php
                         } else
                                 {
-					echo "<tr><td></td><td>";
 					require_once( JPATH_COMPONENT.DS.'assets'.DS.'library'.DS.'recaptchalib.php');
 					echo recaptcha_get_html($this->recaptchakey);
-					echo "</td></tr>";
                                 }
                       } 		
-		?><tr>
-			<td>&nbsp;</td>
-			<td colspan="3"><input type="submit" name="save" value="<?php echo JText::_('Submit'); ?>" /> &nbsp;<input type="reset" name="reset" value="<?php echo JText::_('Reset'); ?>" /></td>
-		</tr>
-	</table>
-
+		?>
+			<div><input type="submit" name="save" value="<?php echo JText::_('Submit'); ?>" /> &nbsp;<input type="reset" name="reset" value="<?php echo JText::_('Reset'); ?>" /></div>
 	<input type="hidden" name="cid" value="<?php echo $this->id ?>" />
 	<input type="hidden" name="option" value="com_phocaguestbook" />
 	<input type="hidden" name="view" value="phocaguestbook" />
