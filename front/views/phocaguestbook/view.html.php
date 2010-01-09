@@ -153,7 +153,7 @@ class PhocaGuestbookViewPhocaGuestbook extends JView
 		if ($tmpl['enableeditor'] == 1) {
 			$editor = PhocaguestbookHelper::displayTextArea('pgbcontent',  $formdata->content , (int)$tmpl['editorwidth'].'px', (int)$tmpl['editorheight'].'px', '60', '80', false );
 		} else {
-			$editor = '<textarea id="pgbcontent" name="pgbcontent" >'.$formdata->content.'</textarea>';
+			$editor = '<textarea id="pgbcontent" name="pgbcontent" rows="6" cols="30" >'.$formdata->content.'</textarea>';
 		
 		}
 		
