@@ -11,3 +11,16 @@ table tr td a img {border:0px;}
 
 #phocaguestbook #mce_editor_0_toolbar {position: static !important;}
 
+/* Form */
+.pginputdiv label {
+	display:inline-block;
+	font-weight:bold;
+	line-height:2;
+	vertical-align: top !important;
+	width:70px;
+}
+.pginputdiv input,textarea {
+	width:240px;
+	margin-bottom:5px;
+	margin-top:0px;
+}

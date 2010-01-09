@@ -219,20 +219,25 @@ if ($show_form == 1) {
 		}
 		
 		if ($this->display['formusername']){
-		        ?><div><label>
-				<input type="text" name="pgusername" id="pgbusername" value="<?php echo $this->formdata->username ?>" size="32" maxlength="100" style="border:1px solid #cccccc" />
-	  		</label><b><?php echo JText::_('Name'); ?></b></div>
-			<?php
+			?><div class="pginputdiv">
+				<label for="pgusername"><?php echo Jtext::_('Name'); ?></label>
+				<input type="text" name="pgusername" id="pgbusername" value="<?php echo $this->formdata->username ?>" size="32" maxlength="100" />
+				</div>
+				<?php
 		}
 		
 		if ($this->display['formemail']) {
-			?><div><label>
-				<input type="text" name="email" id="pgbemail" value="<?php echo $this->formdata->email ?>" size="32" maxlength="100" style="border:1px solid #cccccc" />
-			</label><b><?php echo JText::_('Email'); ?></b></div>
+			?><div class="pginputdiv">
+				<label for="email"><?php echo JText::_('Email'); ?></label>
+				<input type="text" name="email" id="pgbemail" value="<?php echo $this->formdata->email ?>" size="32" maxlength="100" />
+			</div>
 			<?php
-		}
-  		echo $this->editor;
-		
+		}?>
+			<div class="pginputdiv">
+			<label for="pgbcontent"><?php echo JText::_('Content'); ?></label>
+			<?php echo $this->editor;?>
+			</div>
+		<?php		
 		if ($this->enablecaptcha > 0) {
                         
 			// Server side checking CAPTCHA 
@@ -241,7 +246,7 @@ if ($show_form == 1) {
 			
 			// Set fix height because of pane slider
 			$imageHeight = 'style="height:105px"';
-                        if ($this->recaptchakey == '') { //TODO
+                        if ($this->recaptchakey == '') { //TODO: Refactor to CSS layout first
 			?><tr>
                                 <td width="5"><b><?php echo JText::_('Image Verification'); ?>: </b></td>		
 				<td width="5" align="left" valign="middle" <?php echo $imageHeight ?>><?php
