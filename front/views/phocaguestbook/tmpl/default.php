@@ -221,7 +221,7 @@ if ($show_form == 1) {
 		if ($this->display['formusername']){
 			?><div class="pginputdiv">
 				<label for="pgusername"><?php echo Jtext::_('Name'); ?></label>
-				<input type="text" name="pgusername" id="pgbusername" value="<?php echo $this->formdata->username ?>" size="32" maxlength="100" />
+				<input type="text" name="pgusername" id="pgusername" value="<?php echo $this->formdata->username ?>" size="32" maxlength="100" />
 				</div>
 				<?php
 		}
@@ -283,7 +283,7 @@ if ($show_form == 1) {
 	<input type="hidden" name="controller" value="phocaguestbook" />
 	<input type="hidden" name="task" value="submit" />
 	<input type="hidden" name="<?php echo JUtility::getToken(); ?>" value="1" />
-	</form></div><div style="clear:both;">&nbsp;</div><?php
+	</form><div style="clear:both;">&nbsp;</div><?php
 	
 	// Display Pane or not
 	if ($this->tmpl['displayform'] == 0 ) {
