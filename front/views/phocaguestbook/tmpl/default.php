@@ -206,7 +206,7 @@ if ($show_form == 1) {
 			echo $pane->endPanel();
 			echo '</div>';
 		}
-		echo $pane->startPanel( JText::_('Post message'), 'phocaguestbook jpane-toggler-down' );
+		echo $pane->startPanel( JText::_('Post message'), 'phocaguestbook-jpane-toggler-down' );
 	}
 
 	?><form action="<?php echo $this->action; ?>" method="post" name="saveForm" id="pgbSaveForm" onsubmit="return submitbutton();">

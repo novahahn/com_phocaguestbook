@@ -7,7 +7,7 @@ table tr td a img {border:0px;}
 #phocaguestbook  .jpane-toggler span { background: transparent url(images/icon-message.png) 5px 50% no-repeat; padding-left: 24px;cursor:pointer;text-decoration:underline;}
 #phocaguestbook  .jpane-toggler-down span { background: transparent url(images/icon-message.png) 5px 50% no-repeat; padding-left: 24px;cursor:pointer;text-decoration:underline;}
 
-#phocaguestbook-jpane-none     { display:none;backgroud:#fff100;}
+#phocaguestbook-jpane-none     { display:none;background:#fff100;}
 
 #phocaguestbook #mce_editor_0_toolbar {position: static !important;}
 
