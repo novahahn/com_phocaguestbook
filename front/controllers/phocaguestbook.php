@@ -377,7 +377,6 @@ class PhocaGuestbookControllerPhocaGuestbook extends PhocaGuestbookController
 			if (!$resp->is_valid) {
 				$phoca_guestbook_session = 0;
                                 $post['captcha'] = 1;
-				die($post['recaptcha_challenge_field']);
                         }
                         else
                         {
